@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Store Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+    <header class="masthead">
+        <img src="/images/storelogo.png" alt="Fashion Store Logo" class="header-logo">
+        <h1>Fashion Store Assistant</h1>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h1 class="page-title">Fashion Store Assistant</h1>
+
+            <div class="form-group">
+                <label for="sltProduct" class="form-label">Select a product</label>
+                <select id="sltProduct" class="form-control">
+                    <option value="">Please select...</option>
+                    <option th:each="product : ${products}" 
+                            th:value="${product.id}" 
+                            th:text="${product.name}"></option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="txtQuery" class="form-label">What would you like to know?</label>
+                <textarea id="txtQuery" class="form-control" rows="3" cols="40"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button id="btnSend" class="btn btn-primary mt-2">Send</button>
+            </div>
+        </div>
+
+        <div id="spinner" class="spinner-container" style="display: none;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        <div class="card mt-3 fixed-card">
+            <div class="card-body fixed-card-body">
+                <div id="response" class="response-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
